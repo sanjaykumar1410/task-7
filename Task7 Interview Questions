@@ -1,0 +1,110 @@
+1. What is PIL/Pillow?
+👉 PIL (Python Imaging Library) is a Python library used for opening, manipulating, and saving images.
+Pillow is the modern, actively maintained fork of PIL — it supports many formats (JPEG, PNG, GIF, BMP, etc.) and provides tools for resizing, cropping, converting, and filtering images.
+
+2. How do you open and save images?
+👉 Using Pillow’s Image module:
+
+from PIL import Image
+
+img = Image.open("photo.jpg")   # Open an image
+img.save("photo_resized.png")   # Save image to a new file
+
+
+Image.open() → loads the image into memory.
+
+save() → saves it in the desired format or location.
+
+3. What is the resize() method?
+👉 The resize() method changes the dimensions (width and height) of an image.
+Example:
+
+resized = img.resize((800, 800))
+
+
+This creates a new image of size 800x800 pixels.
+
+4. How do you read all files in a directory?
+👉 Using the os module:
+
+import os
+
+for filename in os.listdir("images"):
+    print(filename)
+
+
+os.listdir() lists all files/folders in a directory.
+
+You can then check file extensions to filter image files.
+
+5. What is the os module?
+👉 The os module provides functions to interact with the operating system, such as:
+
+Navigating directories
+
+Creating or deleting folders
+
+Reading file paths
+
+Checking or renaming files
+
+Example:
+
+os.makedirs("resized")  # Creates a folder
+
+
+6. How do you change file formats (e.g., JPG to PNG)?
+👉 You can specify the format when saving the image:
+
+img.save("output.png", "PNG")
+
+
+Even if the original file is .jpg, Pillow can convert it automatically to .png.
+
+7. What is a pixel?
+👉 A pixel (picture element) is the smallest unit of a digital image.
+Each pixel contains color information (usually RGB values).
+When you resize an image, you are changing the number of pixels it contains.
+
+8. What’s the use of try-except here?
+👉 It’s used for error handling — for example, if a file is corrupted or not an image, the script won’t crash.
+Example:
+
+try:
+    img = Image.open(file)
+except Exception as e:
+    print(f"Error opening {file}: {e}")
+
+
+This ensures the program continues running even if one file fails.
+
+9. How can you make the app dynamic?
+👉 You can:
+
+Ask the user for input at runtime:
+
+width = int(input("Enter width: "))
+height = int(input("Enter height: "))
+
+
+Let users choose the folder, format, or size dynamically.
+
+Add command-line arguments (using argparse) to make it more flexible.
+
+10. Can this be extended to GUI?
+👉 Yes ✅
+You can create a Graphical User Interface (GUI) using:
+
+Tkinter → for simple desktop apps
+
+PyQt or Kivy → for more advanced interfaces
+
+A GUI could allow users to:
+
+Browse folders
+
+Choose image size
+
+See previews
+
+Start resizing with a single click
